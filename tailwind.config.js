@@ -11,6 +11,9 @@ module.exports = {
         danger: colors.red,
         primary: colors.blue,
         success: colors.green
+      },
+      fontFamily: {
+        trebuchet: ['Trebuchet MS', 'Lucida Sans', 'sans-serif']
       }
     },
   },

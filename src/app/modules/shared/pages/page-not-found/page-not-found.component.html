@@ -1,0 +1,9 @@
+<main class="flex flex-col h-screen w-full items-center justify-center font-trebuchet text-center">
+    <img src="{{imageUrl}}" class="h-1/2" />
+    <h1 class="my-2 lg:my-6 text-sky-500 text-3xl lg:text-5xl font-medium">So sorry, page not found</h1>
+    <div class="flex flex-col p-5 text-sm lg:text-lg">
+        <span>Are you sure this URL is correct?</span>
+        <span>If so, contact the site owner.</span>
+    </div>
+    <app-main-button [title]="'Return to the home page'" (click)="onReturn()">Return</app-main-button>
+</main>
