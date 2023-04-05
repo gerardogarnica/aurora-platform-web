@@ -13,6 +13,7 @@ module.exports = {
         success: colors.green
       },
       fontFamily: {
+        roboto: ['Roboto', 'Helvetica Neue', 'sans-serif'],
         trebuchet: ['Trebuchet MS', 'Lucida Sans', 'sans-serif']
       }
     },
