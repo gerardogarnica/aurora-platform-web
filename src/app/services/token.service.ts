@@ -9,15 +9,48 @@ export class TokenService {
   accessTokenKeyName = 'access-token-aurora-platform';
   refreshTokenKeyName = 'refresh-token-aurora-platform';
 
-  getAccessToken(): string | undefined {
-    return getCookie(this.accessTokenKeyName);
+  getTokenKeyName(type: TokenType): string {
+    switch (type) {
+      case TokenType.Access: return this.accessTokenKeyName;
+      case TokenType.Refresh: return this.refreshTokenKeyName;
+    }
   }
 
-  setAccessToken(token: string): void {
-    setCookie(this.accessTokenKeyName, token, { expires: 365, path: '/' });
+  getToken(type: TokenType): string | undefined {
+    return getCookie(this.getTokenKeyName(type));
   }
 
-  removeAccessToken(): void {
-    removeCookie(this.accessTokenKeyName);
+  setToken(type: TokenType, token: string): void {
+    setCookie(this.getTokenKeyName(type), token, { expires: 365, path: '/' });
   }
+
+  removeToken(type: TokenType): void {
+    removeCookie(this.getTokenKeyName(type));
+  }
+
+  hasToken(type: TokenType): boolean {
+    return !!this.getToken(type);
+  }
+
+  isValidToken(type: TokenType): boolean {
+    const token = this.getToken(type);
+    if (!token) {
+      return false;
+    }
+
+    const decodedToken = jwt_decode<JwtPayload>(token);
+    if (decodedToken && decodedToken?.exp) {
+      const now = new Date();
+      const expirationDate = new Date(decodedToken.exp * 1000);
+
+      return expirationDate > now;
+    }
+
+    return false;
+  }
+}
+
+enum TokenType {
+  Access,
+  Refresh
 }
