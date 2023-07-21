@@ -50,7 +50,7 @@ export class TokenService {
   }
 }
 
-enum TokenType {
+export enum TokenType {
   Access,
   Refresh
 }
