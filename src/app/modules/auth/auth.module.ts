@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 
 // Components
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 // Pages
 import { LoginComponent } from './pages/login/login.component';
@@ -15,6 +16,7 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
+    LoginFormComponent,
     LoginComponent
   ],
   imports: [

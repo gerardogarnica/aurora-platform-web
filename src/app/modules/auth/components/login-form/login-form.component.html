@@ -1,0 +1,15 @@
+<p>Welcome to Aurora Platform!</p>
+<form [formGroup]="form" novalidate (ngSubmit)="doLogin($event)">
+    <div>
+        <input #nameInput type="email" id="email" formControlName="email" placeholder="Enter user email" maxlength="25">
+    </div>
+    <div>
+        <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter user password" maxlength="30">
+    </div>
+
+    <div>
+        <app-main-button [type]="'submit'" [title]="'Login'" [color]="'success'" [loading]="status === 'loading'">
+            Login
+        </app-main-button>
+    </div>
+</form>
