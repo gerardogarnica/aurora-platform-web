@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { environment } from '@environments/environment';
+
 import { TokenService, TokenType } from './token.service';
 
 import { checkToken } from '@interceptors/token.interceptor';
@@ -13,7 +15,7 @@ import { User } from '@models/security/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = `http://192.168.3.4:5001/aurora/api/security/v1/auth`
+  apiUrl = `${environment.auroraPlatformApiUrl}/aurora/api/security/v1/auth`
   user$ = new BehaviorSubject<User | null>(null);
 
   constructor(
