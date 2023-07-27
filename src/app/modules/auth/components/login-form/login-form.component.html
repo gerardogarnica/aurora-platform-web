@@ -1,10 +1,39 @@
-<p>Welcome to Aurora Platform!</p>
-<form [formGroup]="form" novalidate (ngSubmit)="doLogin($event)">
+<h1 class="text-center font-bold py-2 text-gray-600">
+    Welcome to Aurora Platform!
+</h1>
+<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin($event)">
     <div>
-        <input #nameInput type="email" id="email" formControlName="email" placeholder="Enter user email" maxlength="25">
+        <div>
+            <input #nameInput type="email" id="email" formControlName="email" placeholder="Enter user email"
+                maxlength="25" class="w-full rounded bg-gray-100 border-gray-300 border-2">
+        </div>
+        <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
+            <p *ngIf="form.controls.email.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+                Email is required.
+            </p>
+            <p *ngIf="form.controls.email.hasError('email')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+                Email is not valid.
+            </p>
+        </div>
     </div>
+
     <div>
-        <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter user password" maxlength="30">
+        <div>
+            <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter user password"
+                maxlength="30" class="w-full rounded bg-gray-100 border-gray-300 border-2">
+        </div>
+        <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+            <p *ngIf="form.controls.password.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+                Password is required.
+            </p>
+            <p *ngIf="form.controls.password.hasError('minLength')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+                Password must contain at least 8 characters.
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="status === 'error'" class="font-medium text-red-500 text-xs mt-1 ml-1">
+        Invalid email or password.
     </div>
 
     <div>

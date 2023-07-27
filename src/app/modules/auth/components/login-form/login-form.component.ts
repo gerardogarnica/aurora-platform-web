@@ -11,7 +11,7 @@ import { AuthService } from '@services/auth.service';
 })
 export class LoginFormComponent {
   form = this.formBuilder.nonNullable.group({
-    email: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
   });
   status: ProcessStatus = 'init';
@@ -48,7 +48,7 @@ export class LoginFormComponent {
       .subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         },
         error: () => {
           this.status = 'error';
