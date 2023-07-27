@@ -14,7 +14,7 @@ export class RedirectGuard implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-    if (this.tokenService.isValidToken(TokenType.Refresh)) {
+    if (this.tokenService.isValidToken(TokenType.Access)) {
       this.router.navigate(['/home']);
     }
     return true;
