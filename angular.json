@@ -56,7 +56,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +76,10 @@
             "development": {
               "browserTarget": "aurora-platform-web:build:development"
             }
+          },
+          "options": {
+            "browserTarget": "aurora-platform-web:build",
+            "proxyConfig": "./proxy.config.json"
           },
           "defaultConfiguration": "development"
         },
