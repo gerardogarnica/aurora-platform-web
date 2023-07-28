@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -25,6 +26,7 @@ import { SharedModule } from '@shared/shared.module';
   imports: [
     CommonModule,
     MainRoutingModule,
+    OverlayModule,
     ReactiveFormsModule,
     FontAwesomeModule,
     SharedModule
