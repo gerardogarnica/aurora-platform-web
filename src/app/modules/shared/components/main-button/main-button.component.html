@@ -4,5 +4,11 @@
     [ngClass]="buttonColorClasses"
     [title]="title"
     class="w-full font-medium rounded-lg text-sm lg:text-lg tracking-wider px-5 py-2 focus:ring-4 focus:outline-none">
+    <fa-icon 
+        *ngIf="loading"
+        class="mr-2"
+        [icon]="faSpinner"
+        [pulse]="true">
+    </fa-icon>
     <ng-content></ng-content>
 </button>

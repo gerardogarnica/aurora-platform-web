@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { ButtonColor, BUTTON_COLOR_CLASSES } from '@models/shared/button-color.model';
 
@@ -13,6 +14,7 @@ export class MainButtonComponent {
   @Input() title = '';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
 
+  faSpinner = faSpinner;
   mapButtonColorClasses = BUTTON_COLOR_CLASSES;
 
   get buttonColorClasses() {
