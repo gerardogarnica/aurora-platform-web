@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   logout() {
-    this.http.post(`${this.apiUrl}/logout`, { context: checkToken() })
+    return this.http.post(`${this.apiUrl}/logout`, { context: checkToken() })
       .pipe(
         tap(() => {
           this.tokenService.removeToken(TokenType.Access);
@@ -53,9 +53,11 @@ export class AuthService {
 
   refreshToken() {
     const refreshToken = this.tokenService.getToken(TokenType.Refresh);
+    console.log(refreshToken, this.apiUrl);
     return this.http.post<IdentityToken>(`${this.apiUrl}/refresh-token`, refreshToken, { context: checkToken() })
       .pipe(
         tap(identityToken => {
+          console.log('tap');
           this.tokenService.setToken(TokenType.Access, identityToken.accessToken);
           this.tokenService.setToken(TokenType.Refresh, identityToken.refreshToken);
         })
