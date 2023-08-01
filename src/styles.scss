@@ -4,3 +4,7 @@
 @tailwind utilities;
 
 @import '@angular/cdk/overlay-prebuilt.css';
+
+body { 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
