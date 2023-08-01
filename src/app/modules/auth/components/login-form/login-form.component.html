@@ -1,11 +1,14 @@
-<h1 class="text-center font-bold py-2 text-gray-600">
-    Welcome to Aurora Platform!
+<h1 class="text-center text-xl font-bold">
+    Log in to Aurora Platform
 </h1>
+<p class="text-center text-gray-600 py-2">
+    Please, enter your username and password to log in to.
+</p>
 <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin($event)">
     <div>
         <div>
             <input #nameInput type="email" id="email" formControlName="email" placeholder="Enter user email"
-                maxlength="25" class="w-full rounded bg-gray-100 border-gray-300 border-2">
+                maxlength="25" class="w-full rounded bg-gray-100 border-gray-300 border-2 focus:ring-2 focus:outline-none focus:border-gray-500 focus:ring-gray-500">
         </div>
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
             <p *ngIf="form.controls.email.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
@@ -19,8 +22,8 @@
 
     <div>
         <div>
-            <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter user password"
-                maxlength="30" class="w-full rounded bg-gray-100 border-gray-300 border-2">
+            <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter password"
+                maxlength="30" class="w-full rounded bg-gray-100 border-gray-300 border-2 focus:ring-2 focus:outline-none focus:border-gray-500 focus:ring-gray-500">
         </div>
         <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
             <p *ngIf="form.controls.password.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
@@ -36,9 +39,11 @@
         Invalid email or password.
     </div>
 
-    <div>
-        <app-main-button [type]="'submit'" [title]="'Login'" [color]="'success'" [loading]="status === 'loading'">
-            Login
-        </app-main-button>
+    <div class="flex place-content-center w-full">
+        <div class="w-3/5">
+            <app-main-button [type]="'submit'" [title]="'Login'" [color]="'success'" [loading]="status === 'loading'">
+                Login
+            </app-main-button>
+        </div>
     </div>
 </form>
