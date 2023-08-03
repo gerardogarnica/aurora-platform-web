@@ -1,9 +1,12 @@
-<main class="bg-slate-50 w-screen h-screen grid place-items-center">
-    <div class="flex flex-col items-center w-full m-auto">
-        <app-header></app-header>
-        <div
-            class="bg-blue-900/[.1] w-10/12 sm:w-8/12 xl:w-6/12 2xl:w-4/12 m-auto text-neutral-900 border border-gray-200 rounded-xl p-6 shadow-lg">
-            <router-outlet></router-outlet>
+<main class="bg-gradient-to-r from-zinc-100 via-zinc-200 to-zinc-400 w-screen h-screen grid place-items-center">
+    <div class="flex flex-col sm:flex-row items-center w-full font-quicksand">
+        <div class="sm:w-1/2 xl:w-3/5 text-center">
+            <app-header></app-header>
+        </div>
+        <div class="sm:w-1/2 px-12 lg:pr-12 lg:pl-4 xl:pr-40 xl:pl-0 2xl:pr-72 lg:py-6 py-6 sm:py-0">
+            <div class="bg-slate-600 text-center text-zinc-100 p-6 rounded-xl shadow-2xl">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </main>
