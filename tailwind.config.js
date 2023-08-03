@@ -14,7 +14,8 @@ module.exports = {
       },
       fontFamily: {
         roboto: ['Roboto', 'Helvetica Neue', 'sans-serif'],
-        trebuchet: ['Trebuchet MS', 'Lucida Sans', 'sans-serif']
+        trebuchet: ['Trebuchet MS', 'Lucida Sans', 'sans-serif'],
+        quicksand: ['Quicksand', 'sans-serif']
       }
     },
   },
