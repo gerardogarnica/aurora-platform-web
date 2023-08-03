@@ -1,20 +1,20 @@
-<h1 class="text-center text-xl font-bold">
-    Log in to Aurora Platform
+<h1 class="text-xl md:text-2xl lg:text-3xl font-bold">
+    Login to your account
 </h1>
-<p class="text-center text-gray-600 py-2">
-    Please, enter your username and password to log in to.
+<p class="text-sm lg:text-base text-zinc-300 py-4 sm:py-6">
+    Please, enter your user email and password to login to the administration site of Aurora products.
 </p>
-<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin($event)">
+<form [formGroup]="form" novalidate class="space-y-4 text-black" (ngSubmit)="doLogin($event)">
     <div>
         <div>
-            <input #nameInput type="email" id="email" formControlName="email" placeholder="Enter user email"
-                maxlength="25" class="w-full rounded bg-gray-100 border-gray-300 border-2 focus:ring-2 focus:outline-none focus:border-gray-500 focus:ring-gray-500">
+            <input #nameInput type="email" id="email" formControlName="email" placeholder="Email"
+                maxlength="25" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
         </div>
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-            <p *ngIf="form.controls.email.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+            <p *ngIf="form.controls.email.hasError('required')" class="text-red-400 text-xs font-bold mt-1">
                 Email is required.
             </p>
-            <p *ngIf="form.controls.email.hasError('email')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+            <p *ngIf="form.controls.email.hasError('email')" class="text-red-400 text-xs font-bold mt-1">
                 Email is not valid.
             </p>
         </div>
@@ -22,27 +22,31 @@
 
     <div>
         <div>
-            <input #passwordInput type="password" id="password" formControlName="password" placeholder="Enter password"
-                maxlength="30" class="w-full rounded bg-gray-100 border-gray-300 border-2 focus:ring-2 focus:outline-none focus:border-gray-500 focus:ring-gray-500">
+            <input #passwordInput type="password" id="password" formControlName="password" placeholder="Password"
+                maxlength="30" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
         </div>
         <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-            <p *ngIf="form.controls.password.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+            <p *ngIf="form.controls.password.hasError('required')" class="text-red-400 text-xs font-bold mt-1">
                 Password is required.
             </p>
-            <p *ngIf="form.controls.password.hasError('minLength')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+            <p *ngIf="form.controls.password.hasError('minlength')" class="text-red-400 text-xs font-bold mt-1">
                 Password must contain at least 8 characters.
             </p>
         </div>
     </div>
 
-    <div *ngIf="status === 'error'" class="font-medium text-red-500 text-xs mt-1 ml-1">
+    <div *ngIf="status === 'error'" class="text-red-400 text-xs font-bold mt-1">
         Invalid email or password.
     </div>
 
-    <div class="flex place-content-center w-full">
-        <div class="w-3/5">
-            <app-main-button [type]="'submit'" [title]="'Login'" [color]="'success'" [loading]="status === 'loading'">
-                Login
+    <div class="w-full text-sm sm:text-base text-right pt-2">
+        <a routerLink="/forgot-password" class="text-neutral-100 no-underline hover:underline">Forgot your password?</a>
+    </div>
+
+    <div class="flex place-content-center w-full sm:pt-2">
+        <div class="w-1/2 lg:1/3">
+            <app-main-button [type]="'submit'" [title]="'Login to Aurora Platform'" [color]="'info'" [loading]="status === 'loading'">
+                LOGIN
             </app-main-button>
         </div>
     </div>
