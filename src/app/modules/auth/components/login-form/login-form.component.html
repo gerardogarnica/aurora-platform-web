@@ -6,7 +6,8 @@
 </p>
 <form [formGroup]="form" novalidate class="space-y-4 text-black" (ngSubmit)="doLogin($event)">
     <div>
-        <div>
+        <div class="flex justify-between items-center gap-3">
+            <fa-icon [icon]="faEnvelope" size="2xl" class="w-16 text-zinc-100"></fa-icon>
             <input #nameInput type="email" id="email" formControlName="email" placeholder="Email"
                 maxlength="25" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
         </div>
@@ -21,7 +22,8 @@
     </div>
 
     <div>
-        <div>
+        <div class="flex justify-between items-center gap-3">
+            <fa-icon [icon]="faLock" size="2xl" class="w-16 text-zinc-100"></fa-icon>
             <input #passwordInput type="password" id="password" formControlName="password" placeholder="Password"
                 maxlength="30" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
         </div>

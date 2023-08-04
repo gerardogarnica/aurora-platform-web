@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import { ProcessStatus } from '@models/shared/process-status.model';
 import { AuthService } from '@services/auth.service';
@@ -10,6 +11,9 @@ import { AuthService } from '@services/auth.service';
   templateUrl: './login-form.component.html'
 })
 export class LoginFormComponent {
+  faEnvelope = faEnvelope;
+  faLock = faLock;
+
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
