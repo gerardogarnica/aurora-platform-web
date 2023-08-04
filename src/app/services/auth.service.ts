@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(`${this.apiUrl}/logout`, { context: checkToken() })
+    return this.http.post<number>(`${this.apiUrl}/logout`, null, { context: checkToken() })
       .pipe(
         tap(() => {
           this.tokenService.removeToken(TokenType.Access);
