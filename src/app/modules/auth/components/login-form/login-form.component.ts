@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 
 import { ProcessStatus } from '@models/shared/process-status.model';
 import { AuthService } from '@services/auth.service';
+import { ErrorsService } from '@services/errors.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,6 +15,8 @@ import { AuthService } from '@services/auth.service';
 export class LoginFormComponent {
   faEnvelope = faEnvelope;
   faLock = faLock;
+
+  errorMessage$: Observable<string>;
 
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -24,6 +28,7 @@ export class LoginFormComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private errorService: ErrorsService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.queryParamMap
@@ -33,6 +38,8 @@ export class LoginFormComponent {
           this.form.controls.email.setValue(email);
         }
       });
+
+    this.errorMessage$ = this.errorService.errorMessage$;
   }
 
   doLogin(event: Event) {
@@ -59,5 +66,4 @@ export class LoginFormComponent {
         }
       });
   }
-
 }

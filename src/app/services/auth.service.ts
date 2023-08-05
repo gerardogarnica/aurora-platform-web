@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 
+import { ErrorsService } from './errors.service';
 import { TokenService, TokenType } from './token.service';
 
 import { checkToken } from '@interceptors/token.interceptor';
@@ -20,6 +21,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private errorService: ErrorsService,
     private tokenService: TokenService
   ) { }
 
@@ -30,6 +32,7 @@ export class AuthService {
       }
     })
       .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error)),
         tap(identityToken => {
           this.tokenService.setToken(TokenType.Access, identityToken.accessToken);
           this.tokenService.setToken(TokenType.Refresh, identityToken.refreshToken);

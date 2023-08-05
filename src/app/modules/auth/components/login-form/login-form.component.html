@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center gap-3">
             <fa-icon [icon]="faEnvelope" size="2xl" class="w-16 text-zinc-100"></fa-icon>
             <input #nameInput type="email" id="email" formControlName="email" placeholder="Email"
-                maxlength="25" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
+                maxlength="50" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
         </div>
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
             <p *ngIf="form.controls.email.hasError('required')" class="text-red-400 text-xs font-bold mt-1">
@@ -37,8 +37,11 @@
         </div>
     </div>
 
-    <div *ngIf="status === 'error'" class="text-red-400 text-xs font-bold mt-1">
-        Invalid email or password.
+    <div *ngIf="status === 'error'" class="mt-1">
+        <span *ngIf="errorMessage$ | async as errorMessage"
+            class="bg-red-400 text-xs font-bold p-2">
+            {{ errorMessage }}
+        </span>
     </div>
 
     <div class="w-full text-sm sm:text-base text-right pt-2">
