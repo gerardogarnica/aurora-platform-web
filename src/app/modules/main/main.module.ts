@@ -11,6 +11,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavlinkComponent } from './components/navlink/navlink.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 // Pages
 
@@ -21,7 +22,8 @@ import { SharedModule } from '@shared/shared.module';
   declarations: [
     LayoutComponent,
     NavbarComponent,
-    NavlinkComponent
+    NavlinkComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
