@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAward, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '@services/auth.service';
 
@@ -9,12 +9,17 @@ import { AuthService } from '@services/auth.service';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  faAward = faAward;
   faClose = faClose;
   faUser = faUser;
 
   isOpenUserMenu = false;
   user$ = this.authService.user$;
+
+  @Input() userMenuItems: UserMenuItem[] = [
+    { title: 'Profile', routerLink: '/profile' },
+    { title: 'Settings', routerLink: '/settings' },
+    { title: 'Change password', routerLink: '/change-password' }
+  ];
 
   constructor(
     private router: Router,
@@ -40,4 +45,9 @@ export class NavbarComponent {
     console.log(this.isOpenUserMenu);
   }
 
+}
+
+interface UserMenuItem {
+  title: string;
+  routerLink: string;
 }
