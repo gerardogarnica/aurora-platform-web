@@ -6,7 +6,16 @@ import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+  templateUrl: './sidebar.component.html',
+  styles: [
+    `
+    .activeLink {
+      background: rgb(14 165 233);
+      color: rgb(24 24 7);
+      font-weight: bold;
+    }
+    `
+  ]
 })
 export class SidebarComponent {
   faHouse = faHouse;

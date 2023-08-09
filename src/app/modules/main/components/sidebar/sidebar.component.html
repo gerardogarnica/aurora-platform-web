@@ -2,7 +2,7 @@
     <div class="h-full font-quicksand font-medium pb-4 overflow-y-auto divide-y divide-neutral-200">
         <ul class="space-y-2 py-4">
             <li *ngFor="let item of sidebarMenuItems" class="text-zinc-100 hover:text-zinc-900 hover:font-bold hover:bg-sky-500 transition duration-75">
-                <a [routerLink]="item.routerLink" class="flex py-2 px-5 group">
+                <a [routerLink]="item.routerLink" routerLinkActive="activeLink" class="flex py-2 px-5 group">
                     <fa-icon [icon]="item.icon" class="w-5 h-5 text-center transition duration-75"></fa-icon>
                     <span class="ml-2 whitespace-nowrap">{{ item.title }}</span>
                  </a>
