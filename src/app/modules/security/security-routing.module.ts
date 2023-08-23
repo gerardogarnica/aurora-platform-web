@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SecurityComponent } from './pages/security/security.component';
+import { PermissionsComponent } from './pages/permissions/permissions.component';
+import { RolesComponent } from './pages/roles/roles.component';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SecurityComponent
+    redirectTo: 'users',
+    pathMatch: 'full'
+  },
+  {
+    path: 'users',
+    component: UsersComponent
+  },
+  {
+    path: 'roles',
+    component: RolesComponent
+  },
+  {
+    path: 'permissions',
+    component: PermissionsComponent
   }
 ];
 
