@@ -1,0 +1,14 @@
+<div class="flex group text-2xl font-bold">
+    <fa-icon [icon]="faLock" class="w-5 h-5 text-center"></fa-icon>
+    <span class="ml-2">{{ moduleTitle }}</span>
+</div>
+<div class="my-8 text-sm font-medium text-center border-b border-zinc-900">
+    <ul class="flex flex-wrap -mb-px">
+        <li *ngFor="let item of moduleMenuItems">
+            <a [routerLink]="item.routerLink" routerLinkActive="activeLink"
+                class="inline-block px-6 py-3 border-b-4 border-transparent rounded-t-xl hover:text-sky-500 hover:border-sky-500">
+                {{ item.title }}
+            </a>
+        </li>
+    </ul>
+</div>
