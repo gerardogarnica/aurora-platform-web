@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Components
 import { MainButtonComponent } from './components/main-button/main-button.component';
 import { ModuleContainerComponent } from './components/module-container/module-container.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 // Pages
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -14,7 +15,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   declarations: [
     MainButtonComponent,
     ModuleContainerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   ],
   exports: [
     MainButtonComponent,
-    ModuleContainerComponent
+    ModuleContainerComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }
