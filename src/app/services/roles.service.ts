@@ -7,7 +7,7 @@ import { environment } from '@environments/environment';
 import { ErrorsService } from './errors.service';
 
 import { checkToken } from '@interceptors/token.interceptor';
-import { Role } from '@models/security/role.model';
+import { CreateRole, Role, UpdateRole } from '@models/security/role.model';
 import { PagedCollections } from '@models/shared/paged-collections.model';
 
 @Injectable({
@@ -21,10 +21,33 @@ export class RolesService {
     private errorService: ErrorsService
   ) { }
 
-  getRoles(pageIndex: number, pageSize: number, application: string) {
+  getById(roleId: number) {
+    let url = `${this.apiUrl}/${roleId}`;
+
+    return this.http.get<Role>(url, { context: checkToken() })
+      .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error))
+      );
+  }
+
+  getPaged(pageIndex: number, pageSize: number, application: string) {
     let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&application=${application}`;
 
     return this.http.get<PagedCollections<Role>>(url, { context: checkToken() })
+      .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error))
+      );
+  }
+
+  create(data: CreateRole) {
+    return this.http.post<number>(this.apiUrl, data, { context: checkToken() })
+      .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error))
+      );
+  }
+
+  update(data: UpdateRole) {
+    return this.http.put<number>(this.apiUrl, data, { context: checkToken() })
       .pipe(
         catchError(error => this.errorService.handleErrorMessage(error))
       );

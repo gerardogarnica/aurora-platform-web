@@ -34,7 +34,7 @@ export class RolesComponent {
 
   onPageChange(): void {
     this.rolesService
-      .getRoles(this.pagination.currentPage - 1, this.pagination.pageSize, 'DBB1F084-0E5C-488F-8990-EA1FDF223A94')
+      .getPaged(this.pagination.currentPage - 1, this.pagination.pageSize, 'DBB1F084-0E5C-488F-8990-EA1FDF223A94')
       .subscribe({
         next: collection => {
           console.log(collection);
