@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-bold pb-8">Users Management</h1>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left">
-            <thead class="bg-gray-700 text-white">
+            <thead class="bg-slate-600 text-zinc-100">
                 <tr>
                     <th scope="col" class="p-2">User</th>
                     <th scope="col" class="p-2">Status</th>
@@ -13,8 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users" 
-                class="border border-gray-700 hover:bg-gray-50">
+                <tr *ngFor="let user of collection.items" class="border-b border-slate-600 hover:bg-slate-300">
                     <td class="p-2 whitespace-nowrap">
                         <div class="font-semibold">{{ user.description }}</div>
                         <div class="text-gray-500">{{ user.email }}</div>
@@ -28,10 +27,20 @@
                         </div>
                     </td>
                     <td class="p-2">Not available</td>
-                    <td class="p-2 text-center">Button see roles</td>
+                    <td class="p-2 text-center">
+                        <app-main-button [title]="'View user roles'">View {{ user.firstName }} roles</app-main-button>
+                    </td>
                     <td class="p-2 text-center">Menu actions</td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <app-pagination 
+        [description]="collection.description" 
+        [currentPage]="collection.currentPage"
+        [totalPages]="collection.totalPages" 
+        (goTo)="onGoTo($event)" 
+        (pageSizeChange)="onPageSizeChange($event)">
+    </app-pagination>
 </section>
