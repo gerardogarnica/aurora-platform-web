@@ -5,7 +5,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Components
 import { MainButtonComponent } from './components/main-button/main-button.component';
-import { ModuleContainerComponent } from './components/module-container/module-container.component';
+import { ModuleMenuComponent } from './components/module-menu/module-menu.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 
 // Pages
@@ -14,8 +15,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 @NgModule({
   declarations: [
     MainButtonComponent,
-    ModuleContainerComponent,
+    ModuleMenuComponent,
     PageNotFoundComponent,
+    PageTitleComponent,
     PaginationComponent
   ],
   imports: [
@@ -25,7 +27,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   ],
   exports: [
     MainButtonComponent,
-    ModuleContainerComponent,
+    ModuleMenuComponent,
+    PageTitleComponent,
     PaginationComponent
   ]
 })
