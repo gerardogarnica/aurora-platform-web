@@ -1,4 +1,6 @@
-<app-module-container
-    [moduleTitle]="'Security'"
-    [moduleMenuItems]="items">
-</app-module-container>
+<section>
+    <app-module-menu [moduleName]="'Security'"></app-module-menu>
+    <section class="px-8">
+        <ng-content></ng-content>
+    </section>
+</section>

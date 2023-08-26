@@ -18,26 +18,25 @@ export class RolesComponent {
   ) { }
 
   ngOnInit(): void {
-    this.onPageChange();
+    this.getPagedRoles();
   }
 
   onGoTo(page: number): void {
     this.pagination.currentPage = page;
-    this.onPageChange();
+    this.getPagedRoles();
   }
 
   onPageSizeChange(pageSize: number): void {
     this.pagination.pageSize = pageSize;
     this.pagination.currentPage = 1;
-    this.onPageChange();
+    this.getPagedRoles();
   }
 
-  onPageChange(): void {
+  getPagedRoles(): void {
     this.rolesService
       .getPaged(this.pagination.currentPage - 1, this.pagination.pageSize, 'DBB1F084-0E5C-488F-8990-EA1FDF223A94')
       .subscribe({
         next: collection => {
-          console.log(collection);
           this.collection = collection;
         }
       });

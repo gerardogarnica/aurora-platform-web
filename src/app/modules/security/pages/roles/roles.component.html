@@ -1,7 +1,6 @@
-<app-header></app-header>
-<section class="px-8">
-    <h1 class="text-2xl font-bold pb-8">Roles Management</h1>
-    <div class="relative overflow-x-auto">
+<app-header>
+    <app-page-title [title]="'Roles Management'"></app-page-title>
+    <div class="overflow-x-auto">
         <table class="w-full text-sm text-left">
             <thead class="bg-slate-600 text-zinc-100">
                 <tr>
@@ -38,4 +37,4 @@
         (goTo)="onGoTo($event)" 
         (pageSizeChange)="onPageSizeChange($event)">
     </app-pagination>
-</section>
+</app-header>

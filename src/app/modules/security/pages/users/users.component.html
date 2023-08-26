@@ -1,6 +1,5 @@
-<app-header></app-header>
-<section class="px-8">
-    <h1 class="text-2xl font-bold pb-8">Users Management</h1>
+<app-header>
+    <app-page-title [title]="'Users Management'"></app-page-title>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left">
             <thead class="bg-slate-600 text-zinc-100">
@@ -43,4 +42,4 @@
         (goTo)="onGoTo($event)" 
         (pageSizeChange)="onPageSizeChange($event)">
     </app-pagination>
-</section>
+</app-header>

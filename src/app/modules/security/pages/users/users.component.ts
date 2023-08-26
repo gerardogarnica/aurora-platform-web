@@ -18,26 +18,25 @@ export class UsersComponent {
   ) { }
 
   ngOnInit(): void {
-    this.onPageChange();
+    this.getPagedUsers();
   }
 
   onGoTo(page: number): void {
     this.pagination.currentPage = page;
-    this.onPageChange();
+    this.getPagedUsers();
   }
 
   onPageSizeChange(pageSize: number): void {
     this.pagination.pageSize = pageSize;
     this.pagination.currentPage = 1;
-    this.onPageChange();
+    this.getPagedUsers();
   }
 
-  onPageChange(): void {
+  getPagedUsers(): void {
     this.userService
       .getUsers(this.pagination.currentPage - 1, this.pagination.pageSize)
       .subscribe({
         next: collection => {
-          console.log(collection);
           this.collection = collection;
         }
       });
