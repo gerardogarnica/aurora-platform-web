@@ -28,7 +28,13 @@ export class PaginationComponent {
 
   visiblePages: number[] = [];
   pageSize: number = 10;
-  pageSizes: number[] = [10, 20, 50, 100];
+
+  pageSizes: PaginatorSize[] = [
+    { text: '10', value: 10 },
+    { text: '25', value: 25 },
+    { text: '50', value: 50 },
+    { text: '100', value: 100 }
+  ];
 
   ngOnInit(): void {
     this.currentPage = 0;
@@ -76,4 +82,13 @@ export class PaginationComponent {
       (item) => item + startIndex + 1
     );
   }
+
+  get buttonPageClasses(): string {
+    return 'flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75';
+  }
+}
+
+type PaginatorSize = {
+  text: string;
+  value: number;
 }

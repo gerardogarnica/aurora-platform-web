@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Role } from '@models/security/role.model';
-import { PagedCollections } from '@models/shared/paged-collections.model';
+import { PagedCollections, PaginationRequest } from '@models/shared/paged-collections.model';
 import { RolesService } from '@services/roles.service';
-import { PaginationRequest } from '@shared/components/pagination/pagination.component';
 
 @Component({
   selector: 'app-roles',

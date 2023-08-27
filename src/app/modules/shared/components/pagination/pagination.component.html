@@ -3,22 +3,21 @@
         <span>{{ description }}</span>
         <div class="flex justify-around items-center gap-1">
             Show
-            <select name="pageSizesList" 
-                id="pageSizesList" 
-                #mySelect
-                class="w-14 h-8 p-1 pl-2 text-xs rounded-lg bg-gray-100 border border-sky-700 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500"
-                (change)="onPageSizeChange(mySelect.value)">
-                <option *ngFor="let size of pageSizes" [value]="size">
-                    {{ size }}
-                </option>
-            </select>
+            <div class="w-14 h-8">
+                <app-dropdown
+                    [name]="'pageSizeList'"
+                    [options]="pageSizes"
+                    (selectedValueChange)="onPageSizeChange($event)">
+                </app-dropdown>
+            </div>
             entries
         </div>
     </section>
     <ul class="inline-flex -space-x-px h-8">
         <li>
             <button aria-label="Go To First Page" [attr.aria-disabled]="currentPage === 1" [disabled]="currentPage === 1"
-                class="flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 rounded-l-lg border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75"
+                class="rounded-l-lg"
+                [ngClass]="buttonPageClasses"
                 (click)="onGoTo(1)">
                 <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
@@ -31,7 +30,7 @@
         </li>
         <li>
             <button aria-label="Go To Previous Page" [attr.aria-disabled]="currentPage === 1" [disabled]="currentPage === 1"
-                class="flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75"
+                [ngClass]="buttonPageClasses"
                 (click)="onGoTo(currentPage - 1)">
                 <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
@@ -41,7 +40,7 @@
         </li>
         <li *ngFor="let page of visiblePages">
             <button [attr.aria-label]="page === currentPage ? 'Current Page, Page ' + page : 'Go to Page ' + page" [attr.aria-disabled]="currentPage === page" [disabled]="currentPage === page"
-                class="flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75"
+                [ngClass]="buttonPageClasses"
                 [class.current]="page === currentPage"
                 (click)="onGoTo(page)">
                 {{ page }}
@@ -49,7 +48,7 @@
         </li>
         <li>
             <button aria-label="Go To Next Page" [attr.aria-disabled]="currentPage === totalPages" [disabled]="currentPage === totalPages"
-                class="flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75"
+                [ngClass]="buttonPageClasses"
                 (click)="onGoTo(currentPage + 1)">
                 <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -59,7 +58,8 @@
         </li>
         <li>
             <button aria-label="Go To Last Page" [attr.aria-disabled]="currentPage === totalPages" [disabled]="currentPage === totalPages"
-                class="flex items-center justify-center px-2 h-8 leading-tight bg-sky-700 hover:bg-sky-500 text-zinc-100 hover:text-zinc-900 rounded-r-lg border border-neutral-200 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition duration-75"
+                class="rounded-r-lg"
+                [ngClass]="buttonPageClasses"
                 (click)="onGoTo(totalPages)">
                 <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
