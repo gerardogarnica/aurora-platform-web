@@ -62,7 +62,6 @@ export class PaginationComponent {
   updateVisiblePages(): void {
     if (this.currentPage <= 0 || this.totalPages <= 0) return;
 
-    console.log(this.currentPage, this.totalPages, this.visibleRangeLength);
     const length = Math.min(this.totalPages, this.visibleRangeLength);
     const startIndex = Math.max(
       Math.min(
@@ -71,19 +70,10 @@ export class PaginationComponent {
       ),
       0
     );
-    console.log(length, startIndex);
 
     this.visiblePages = Array.from(
       new Array(length).keys(),
       (item) => item + startIndex + 1
     );
-
-    console.log(this.visiblePages);
   }
-
-}
-
-export interface PaginationRequest {
-  currentPage: number;
-  pageSize: number;
 }

@@ -8,3 +8,8 @@ export interface PagedCollections<T> {
     hasPreviousPage: boolean;
     hasNextPage: boolean;
 }
+
+export interface PaginationRequest {
+    currentPage: number;
+    pageSize: number;
+}
