@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Components
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MainButtonComponent } from './components/main-button/main-button.component';
 import { ModuleMenuComponent } from './components/module-menu/module-menu.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
@@ -14,6 +15,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 
 @NgModule({
   declarations: [
+    DropdownComponent,
     MainButtonComponent,
     ModuleMenuComponent,
     PageNotFoundComponent,
@@ -26,6 +28,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     FontAwesomeModule
   ],
   exports: [
+    DropdownComponent,
     MainButtonComponent,
     ModuleMenuComponent,
     PageTitleComponent,

@@ -1,0 +1,7 @@
+<select name="{{ name }}" id="{{ name }}" #mySelect
+    class="w-full h-full p-1 pl-2 text-xs rounded-lg bg-gray-100 border border-sky-700 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500"
+    (change)="onChange(mySelect.value)">
+    <option *ngFor="let option of options" [value]="option.value">
+        {{ option.text }}
+    </option>
+</select>
