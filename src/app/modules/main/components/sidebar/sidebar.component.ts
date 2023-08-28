@@ -52,6 +52,18 @@ export class SidebarComponent {
       });
   }
 
+  get menuItemClasses(): string {
+    return 'text-zinc-100 hover:text-zinc-900 hover:font-bold hover:bg-sky-500 transition duration-75';
+  }
+  get MenuItemLinkClasses(): string {
+    return 'flex py-2 px-5 group';
+  }
+  get MenuItemIconLinkClasses(): string {
+    return 'w-5 h-5 text-center transition duration-75';
+  }
+  get MenuItemTextLinkClasses(): string {
+    return 'ml-2 whitespace-nowrap';
+  }
 }
 
 interface SidebarMenuItem {
