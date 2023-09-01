@@ -1,5 +1,23 @@
 <app-header>
     <app-page-title [title]="'Roles Management'"></app-page-title>
+    <div class="flex flex-col md:flex-row items-center justify-between pb-4 space-y-3 md:space-y-0 md:space-x-16">
+        <div class="w-full md:w-2/5">
+            <form class="flex items-center text-black">
+                <label for="simple-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                    </div>
+                    <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm rounded-xl bg-gray-100 border-1 border-gray-300 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500" placeholder="Search">
+                </div>
+            </form>
+        </div>
+        <div class="w-full md:w-48 justify-end">
+            <app-main-button [title]="'Add role'" (click)="onAddNewRole()" class="text-sm">
+                Add role
+            </app-main-button>
+        </div>
+    </div>
     <div class="overflow-x-auto">
         <table class="w-full text-sm text-left">
             <thead class="bg-slate-600 text-zinc-100">
@@ -24,7 +42,24 @@
                             <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Inactive
                         </div>
                     </td>
-                    <td class="p-2 text-center">Menu actions</td>
+                    <td class="p-2 text-center">
+                        <button [cdkMenuTriggerFor]="actionsMenu" class="w-8 h-8 inline-flex justify-center items-center hover:bg-sky-500 hover:text-zinc-100 rounded-xl focus:ring-1 focus:outline-none focus:border-sky-700 focus:ring-sky-700">
+                            <fa-icon [icon]="faEllipsisVertical"></fa-icon>
+                        </button>
+
+                        <ng-template #actionsMenu>
+                            <div class="w-24 bg-sky-500 font-quicksand text-zinc-100 text-xs border border-neutral-200 divide-y divide-neutral-200 rounded-lg shadow-sm shadow-neutral-200" cdkMenu>
+                                <ul class="py-2">
+                                    <li>
+                                        <button class="block w-full text-left px-4 py-2 hover:bg-sky-700 hover:font-bold" (click)="onEditRole(role.roleId)" cdkMenuItem>Edit</button>
+                                    </li>
+                                    <li>
+                                        <button class="block w-full text-left px-4 py-2 hover:bg-sky-700 hover:font-bold" cdkMenuItem>Deactivate</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ng-template>
+                    </td>
                 </tr>
             </tbody>
         </table>

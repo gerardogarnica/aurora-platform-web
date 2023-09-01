@@ -1,7 +1,10 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
+import { faEllipsisVertical, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import { Role } from '@models/security/role.model';
 import { PagedCollections, PaginationRequest } from '@models/shared/paged-collections.model';
+import { RoleDetailDialogComponent } from '@modules/security/components/role-detail-dialog/role-detail-dialog.component';
 import { RolesService } from '@services/roles.service';
 
 @Component({
@@ -9,15 +12,42 @@ import { RolesService } from '@services/roles.service';
   templateUrl: './roles.component.html'
 })
 export class RolesComponent {
+  faEllipsisVertical = faEllipsisVertical;
+  faMagnifyingGlass = faMagnifyingGlass;
+
   collection: PagedCollections<Role> = {} as PagedCollections<Role>;
   pagination: PaginationRequest = { currentPage: 1, pageSize: 10 };
+  role!: Role;
 
   constructor(
-    private rolesService: RolesService
+    private rolesService: RolesService,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
     this.getPagedRoles();
+  }
+
+  onAddNewRole(): void {
+    const dialogRef = this.dialog.open(RoleDetailDialogComponent, {
+      autoFocus: false,
+      data: { action: 'add', roleId: 0 }
+    });
+
+    dialogRef.closed.subscribe(() => {
+      this.getPagedRoles();
+    });
+  }
+
+  onEditRole(roleId: number): void {
+    const dialogRef = this.dialog.open(RoleDetailDialogComponent, {
+      autoFocus: false,
+      data: { action: 'edit', roleId: roleId }
+    });
+
+    dialogRef.closed.subscribe(() => {
+      this.getPagedRoles();
+    });
   }
 
   onGoTo(page: number): void {
