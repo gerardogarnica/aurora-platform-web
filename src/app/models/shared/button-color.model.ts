@@ -4,10 +4,12 @@ export type GetColorClases = Record<ButtonColor, Record<string, boolean>>;
 
 export const BUTTON_COLOR_CLASSES: GetColorClases = {
     default: {
-        'text-white': true,
+        'text-zinc-100': true,
+        'hover:text-white': true,
         'bg-sky-500': true,
-        'hover:bg-sky-800': true,
-        'focus:ring-sky-300': true
+        'hover:bg-sky-700': true,
+        'focus:border-sky-700': true,
+        'focus:ring-sky-700': true
     },
     success: {
         'text-white': true,
@@ -28,10 +30,12 @@ export const BUTTON_COLOR_CLASSES: GetColorClases = {
         'focus:ring-yellow-300': true
     },
     info: {
-        'text-white': true,
-        'bg-blue-500': true,
-        'hover:bg-blue-800': true,
-        'focus:ring-blue-300': true
+        'text-zinc-100': true,
+        'hover:text-white': true,
+        'bg-sky-500': true,
+        'hover:bg-sky-700': true,
+        'focus:border-sky-700': true,
+        'focus:ring-sky-700': true
     },
     light: {
         'text-white': true,
