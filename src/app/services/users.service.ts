@@ -7,7 +7,7 @@ import { environment } from '@environments/environment';
 import { ErrorsService } from './errors.service';
 
 import { checkToken } from '@interceptors/token.interceptor';
-import { User } from '@models/security/user.model';
+import { CreateUser, UpdateUser, User } from '@models/security/user.model';
 import { PagedCollections } from '@models/shared/paged-collections.model';
 
 @Injectable({
@@ -34,6 +34,20 @@ export class UsersService {
     let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&roleId=${rolId}`;
 
     return this.http.get<PagedCollections<User>>(url, { context: checkToken() })
+      .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error))
+      );
+  }
+
+  create(data: CreateUser) {
+    return this.http.post<number>(this.apiUrl, data, { context: checkToken() })
+      .pipe(
+        catchError(error => this.errorService.handleErrorMessage(error))
+      );
+  }
+
+  update(data: UpdateUser) {
+    return this.http.put<number>(this.apiUrl, data, { context: checkToken() })
       .pipe(
         catchError(error => this.errorService.handleErrorMessage(error))
       );

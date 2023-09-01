@@ -12,3 +12,12 @@ export interface User {
     isActive: boolean;
     roles: Role[];
 }
+
+export interface CreateUser {
+    email: string;
+    firstName: string;
+    lastName: string;
+}
+
+export interface UpdateUser extends CreateUser {
+}
