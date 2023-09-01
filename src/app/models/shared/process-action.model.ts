@@ -1,0 +1,1 @@
+export type ProcessAction = 'none' | 'view' | 'add' | 'edit' | 'delete';
