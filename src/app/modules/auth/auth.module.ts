@@ -13,6 +13,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 
 // Pages
 import { LoginComponent } from './pages/login/login.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 // Modules
 import { SharedModule } from '@shared/shared.module';
@@ -22,7 +23,8 @@ import { SharedModule } from '@shared/shared.module';
     HeaderComponent,
     LayoutComponent,
     LoginFormComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
