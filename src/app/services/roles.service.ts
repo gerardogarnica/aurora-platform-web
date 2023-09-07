@@ -30,8 +30,8 @@ export class RolesService {
       );
   }
 
-  getPaged(pageIndex: number, pageSize: number, application: string) {
-    let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&application=${application}`;
+  getPaged(pageIndex: number, pageSize: number, application: string, search: string) {
+    let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&application=${application}&search=${search}`;
 
     return this.http.get<PagedCollections<Role>>(url, { context: checkToken() })
       .pipe(

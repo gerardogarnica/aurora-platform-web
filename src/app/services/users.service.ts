@@ -30,8 +30,8 @@ export class UsersService {
       );
   }
 
-  getUsers(pageIndex: number, pageSize: number, rolId: number = 0) {
-    let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&roleId=${rolId}`;
+  getPaged(pageIndex: number, pageSize: number, rolId: number = 0, search: string) {
+    let url = `${this.apiUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&roleId=${rolId}&search=${search}`;
 
     return this.http.get<PagedCollections<User>>(url, { context: checkToken() })
       .pipe(
