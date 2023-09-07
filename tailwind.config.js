@@ -26,6 +26,10 @@ module.exports = {
         'danger': {
           DEFAULT: '#f87171'
         },
+        'info': {
+          DEFAULT: '#44a3ec',
+          dark: '#0f6bba'
+        },
         'highlight': {
           primary: '#38bcf8',
           DEFAULT: '#075e85',

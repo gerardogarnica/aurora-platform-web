@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 
 import { ProcessStatus } from '@models/shared/process-status.model';
@@ -15,6 +15,7 @@ import { ErrorsService } from '@services/errors.service';
 export class LoginFormComponent {
   faEnvelope = faEnvelope;
   faLock = faLock;
+  faSpinner = faSpinner;
 
   errorMessage$: Observable<string>;
 
