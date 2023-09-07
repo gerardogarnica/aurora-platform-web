@@ -1,21 +1,21 @@
 <h1 class="text-xl md:text-2xl lg:text-3xl font-bold">
     Login to your account
 </h1>
-<p class="text-sm lg:text-base text-zinc-300 py-4 sm:py-6">
+<p class="text-sm lg:text-base text-label-opaque py-4 sm:py-6">
     Please, enter your user email and password to login to the administration site of Aurora products.
 </p>
-<form [formGroup]="form" novalidate class="space-y-4 text-black" (ngSubmit)="doLogin($event)">
+<form [formGroup]="form" novalidate class="space-y-4 text-label-controls" (ngSubmit)="doLogin($event)">
     <div>
         <div class="flex justify-between items-center gap-3">
-            <fa-icon [icon]="faEnvelope" size="2xl" class="w-16 text-zinc-100"></fa-icon>
+            <fa-icon [icon]="faEnvelope" size="2xl" class="w-16 text-label"></fa-icon>
             <input #nameInput type="email" id="email" formControlName="email" placeholder="Email"
-                maxlength="50" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
+                maxlength="50" class="w-full rounded-xl bg-control-primary border-2 border-control-secondary text-sm sm:text-base focus:ring-1 focus:outline-none focus:border-highlight-primary focus:ring-highlight-primary">
         </div>
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-            <p *ngIf="form.controls.email.hasError('required')" class="text-red-400 text-xs font-bold mt-1">
+            <p *ngIf="form.controls.email.hasError('required')" class="text-danger text-xs font-bold mt-1">
                 Email is required.
             </p>
-            <p *ngIf="form.controls.email.hasError('email')" class="text-red-400 text-xs font-bold mt-1">
+            <p *ngIf="form.controls.email.hasError('email')" class="text-danger text-xs font-bold mt-1">
                 Email is not valid.
             </p>
         </div>
@@ -23,15 +23,15 @@
 
     <div>
         <div class="flex justify-between items-center gap-3">
-            <fa-icon [icon]="faLock" size="2xl" class="w-16 text-zinc-100"></fa-icon>
+            <fa-icon [icon]="faLock" size="2xl" class="w-16 text-label"></fa-icon>
             <input #passwordInput type="password" id="password" formControlName="password" placeholder="Password"
-                maxlength="30" class="w-full rounded-xl bg-gray-100 border-2 border-gray-300 text-sm sm:text-base focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500">
+                maxlength="30" class="w-full rounded-xl bg-control-primary border-2 border-control-secondary text-sm sm:text-base focus:ring-1 focus:outline-none focus:border-highlight-primary focus:ring-highlight-primary">
         </div>
         <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-            <p *ngIf="form.controls.password.hasError('required')" class="text-red-400 text-xs font-bold mt-1">
+            <p *ngIf="form.controls.password.hasError('required')" class="text-danger text-xs font-bold mt-1">
                 Password is required.
             </p>
-            <p *ngIf="form.controls.password.hasError('minlength')" class="text-red-400 text-xs font-bold mt-1">
+            <p *ngIf="form.controls.password.hasError('minlength')" class="text-danger text-xs font-bold mt-1">
                 Password must contain at least 8 characters.
             </p>
         </div>
@@ -39,13 +39,13 @@
 
     <div *ngIf="status === 'error'" class="mt-1">
         <span *ngIf="errorMessage$ | async as errorMessage"
-            class="bg-red-400 text-xs font-bold p-2">
+            class="bg-danger text-xs font-bold p-2">
             {{ errorMessage }}
         </span>
     </div>
 
     <div class="w-full text-sm sm:text-base text-right pt-2">
-        <a routerLink="/forgot-password" class="text-neutral-100 no-underline hover:underline">Forgot your password?</a>
+        <a routerLink="/forgot-password" class="text-label no-underline hover:underline focus:ring-2 focus:outline-none focus:border-highlight-primary focus:ring-highlight-primary">Forgot your password?</a>
     </div>
 
     <div class="flex place-content-center w-full sm:pt-2">
