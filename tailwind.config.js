@@ -12,7 +12,7 @@ module.exports = {
           light: '#e4ebf5',
           dark: '#cedeef'
         },
-        'card': '#0f497d',
+        'card': '#2c6d9d',
         'label': {
           DEFAULT: '#fafafa',
           opaque: '#dcdcdc',
@@ -28,7 +28,7 @@ module.exports = {
         },
         'info': {
           DEFAULT: '#44a3ec',
-          dark: '#0f6bba'
+          dark: '#1c88db'
         },
         'highlight': {
           primary: '#38bcf8',

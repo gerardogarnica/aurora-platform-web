@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 
 import { ProcessStatus } from '@models/shared/process-status.model';
@@ -14,6 +14,7 @@ import { ErrorsService } from '@services/errors.service';
 })
 export class ForgotPasswordComponent {
   faEnvelope = faEnvelope;
+  faSpinner = faSpinner;
 
   errorMessage$: Observable<string>;
 

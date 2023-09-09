@@ -12,13 +12,13 @@
             </label>
             <input type="email" id="email" formControlName="email" placeholder="Email" maxlength="50" class="text-box">
         </div>
-        <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-            <p *ngIf="form.controls.email.hasError('required')" class="text-danger text-xs font-bold mt-1">
+        <div *ngIf="form.controls.email.touched && form.controls.email.invalid" class="mt-0.5">
+            <span *ngIf="form.controls.email.hasError('required')" class="bg-danger text-xs font-bold p-1">
                 Email is required.
-            </p>
-            <p *ngIf="form.controls.email.hasError('email')" class="text-danger text-xs font-bold mt-1">
+            </span>
+            <span *ngIf="form.controls.email.hasError('email')" class="bg-danger text-xs font-bold p-1">
                 Email is not valid.
-            </p>
+            </span>
         </div>
     </div>
 
@@ -29,21 +29,20 @@
             </label>
             <input type="password" id="password" formControlName="password" placeholder="Password" maxlength="30" class="text-box">
         </div>
-        <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-            <p *ngIf="form.controls.password.hasError('required')" class="text-danger text-xs font-bold mt-1">
+        <div *ngIf="form.controls.password.touched && form.controls.password.invalid" class="mt-0.5">
+            <span *ngIf="form.controls.password.hasError('required')" class="bg-danger text-xs font-bold p-1">
                 Password is required.
-            </p>
-            <p *ngIf="form.controls.password.hasError('minlength')" class="text-danger text-xs font-bold mt-1">
+            </span>
+            <span *ngIf="form.controls.password.hasError('minlength')" class="bg-danger text-xs font-bold p-1">
                 Password must contain at least 8 characters.
-            </p>
+            </span>
         </div>
-    </div>
-
-    <div *ngIf="status === 'error'" class="mt-1">
-        <span *ngIf="errorMessage$ | async as errorMessage"
-            class="bg-danger text-xs font-bold p-2">
-            {{ errorMessage }}
-        </span>
+        <div *ngIf="status === 'error' && !form.controls.email.invalid && !form.controls.password.invalid" class="mt-0.5">
+            <span *ngIf="errorMessage$ | async as errorMessage"
+                class="bg-danger text-xs font-bold p-1">
+                {{ errorMessage }}
+            </span>
+        </div>
     </div>
 
     <div class="w-full text-sm sm:text-base text-right pt-2">
