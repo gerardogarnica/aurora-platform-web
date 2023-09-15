@@ -1,5 +1,5 @@
 <ng-container *ngIf="user$ | async as user">
-  <nav class="fixed top-0 z-50 w-full bg-sky-700 border-b border-neutral-200 font-quicksand">
+  <nav class="fixed top-0 z-50 w-full bg-sky-700 border-b border-neutral-200 font-montserrat">
     <div class="p-3 lg:px-5">
       <div class="flex items-center justify-between">
         <div class="flex items-center justify-start text-white">
@@ -41,7 +41,7 @@
     [cdkConnectedOverlayOpen]="isOpenUserMenu"
     (overlayOutsideClick)="isOpenUserMenu = !isOpenUserMenu">
         <div
-          class="z-50 mt-0.5 text-base list-none bg-sky-600 border border-neutral-200 font-quicksand text-zinc-100 divide-y divide-neutral-200 rounded-lg shadow-sm shadow-neutral-200"
+          class="z-50 mt-0.5 text-base list-none bg-sky-600 border border-neutral-200 font-montserrat text-zinc-100 divide-y divide-neutral-200 rounded-lg shadow-sm shadow-neutral-200"
           id="user-dropdown">
           <div class="px-4 py-3">
             <span class="block text-sm font-semibold">{{ user?.description }}</span>
