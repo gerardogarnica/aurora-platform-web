@@ -53,7 +53,7 @@ export class UsersComponent {
 
   getPagedUsers(): void {
     this.userService
-      .getUsers(this.pagination.currentPage - 1, this.pagination.pageSize)
+      .getPaged(this.pagination.currentPage - 1, this.pagination.pageSize, 0, '')
       .subscribe({
         next: collection => {
           this.collection = collection;

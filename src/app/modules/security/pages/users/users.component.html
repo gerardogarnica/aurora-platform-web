@@ -8,7 +8,7 @@
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
                     </div>
-                    <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm rounded-xl bg-gray-100 border-1 border-gray-300 focus:ring-1 focus:outline-none focus:border-sky-500 focus:ring-sky-500" placeholder="Search">
+                    <input type="text" id="simple-search" placeholder="Search" maxlength="100" class="text-box pl-10">
                 </div>
             </form>
         </div>
@@ -30,6 +30,11 @@
                 </tr>
             </thead>
             <tbody>
+                <tr *ngIf="collection.items.length === 0" class="border-b border-slate-600">
+                    <td class="p-4 text-center" colspan="5">
+                        There are no users to display.
+                    </td>
+                </tr>
                 <tr *ngFor="let user of collection.items" class="border-b border-slate-600 hover:bg-slate-300">
                     <td class="flex items-center p-2 whitespace-nowrap">
                         <img class="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="{{ user.description }}">
@@ -53,17 +58,20 @@
                         </app-main-button>
                     </td>
                     <td class="p-2 text-center">
-                        <button [cdkMenuTriggerFor]="actionsMenu" class="w-8 h-8 inline-flex justify-center items-center hover:bg-sky-500 hover:text-zinc-100 rounded-xl focus:ring-1 focus:outline-none focus:border-sky-700 focus:ring-sky-700">
+                        <button [disabled]="user.isDefault === true" [cdkMenuTriggerFor]="actionsMenu" class="w-8 h-8 inline-flex justify-center items-center hover:bg-sky-500 hover:text-zinc-100 rounded-xl focus:ring-1 focus:outline-none focus:border-sky-700 focus:ring-sky-700 disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-black">
                             <fa-icon [icon]="faEllipsisVertical"></fa-icon>
                         </button>
 
                         <ng-template #actionsMenu>
-                            <div class="w-24 bg-sky-500 font-quicksand text-zinc-100 text-xs border border-neutral-200 divide-y divide-neutral-200 rounded-lg shadow-sm shadow-neutral-200" cdkMenu>
+                            <div class="w-24 bg-sky-500 font-montserrat text-zinc-100 text-xs border border-neutral-200 divide-y divide-neutral-200 rounded-lg shadow-sm shadow-neutral-200" cdkMenu>
                                 <ul class="py-2">
-                                    <li>
+                                    <li *ngIf="user.isActive">
                                         <button class="block w-full text-left px-4 py-2 hover:bg-sky-700 hover:font-bold" cdkMenuItem>Edit</button>
                                     </li>
-                                    <li>
+                                    <li *ngIf="!user.isActive">
+                                        <button class="block w-full text-left px-4 py-2 hover:bg-sky-700 hover:font-bold" cdkMenuItem>Activate</button>
+                                    </li>
+                                    <li *ngIf="user.isActive">
                                         <button class="block w-full text-left px-4 py-2 hover:bg-sky-700 hover:font-bold" cdkMenuItem>Deactivate</button>
                                     </li>
                                 </ul>
