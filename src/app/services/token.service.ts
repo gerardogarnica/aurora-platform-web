@@ -41,7 +41,7 @@ export class TokenService {
     const decodedToken = jwt_decode<JwtPayload>(token);
     if (decodedToken && decodedToken?.exp) {
       const now = new Date();
-      const expirationDate = new Date(decodedToken.exp * 1000);
+      const expirationDate = new Date(decodedToken.exp * 1001);
 
       return expirationDate > now;
     }
