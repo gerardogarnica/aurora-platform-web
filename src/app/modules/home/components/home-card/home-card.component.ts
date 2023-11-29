@@ -31,11 +31,20 @@ export class HomeCardComponent {
     return 'Applications';
   }
 
+  get url() {
+    if (this.type === 'applications') return '/applications';
+    if (this.type === 'attributes') return '/attributes';
+    if (this.type === 'locations') return '/locations';
+    if (this.type === 'security') return '/security';
+
+    return '/';
+  }
+
   get description() {
-    if (this.type === 'applications') return 'Manage applications, components and data profiles.';
-    if (this.type === 'attributes') return 'Manage your attributes';
-    if (this.type === 'locations') return 'Manage your locations';
-    if (this.type === 'security') return 'Manage your security';
+    if (this.type === 'applications') return 'Manage applications, components and custom data profiles.';
+    if (this.type === 'attributes') return 'Manage common attributes, scoped attributes and option lists for applications.';
+    if (this.type === 'locations') return 'Manage country locations.';
+    if (this.type === 'security') return 'Manage users and roles, as well as permissions and access control for applications.';
 
     return 'Manage your applications';
   }
