@@ -1,5 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { debounceTime } from "rxjs/operators";
 import { faEllipsisVertical, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import { Role } from '@models/security/role.model';
@@ -17,7 +19,9 @@ export class RolesComponent {
 
   collection: PagedCollections<Role> = {} as PagedCollections<Role>;
   pagination: PaginationRequest = { currentPage: 1, pageSize: 10 };
+  searchText: string = '';
   role!: Role;
+  obs: Subscription = new Subscription();
 
   constructor(
     private rolesService: RolesService,
@@ -31,6 +35,7 @@ export class RolesComponent {
   onAddNewRole(): void {
     const dialogRef = this.dialog.open(RoleDetailDialogComponent, {
       autoFocus: false,
+      width: '672px',
       data: { action: 'add', roleId: 0 }
     });
 
@@ -42,12 +47,20 @@ export class RolesComponent {
   onEditRole(roleId: number): void {
     const dialogRef = this.dialog.open(RoleDetailDialogComponent, {
       autoFocus: false,
+      width: '672px',
       data: { action: 'edit', roleId: roleId }
     });
 
     dialogRef.closed.subscribe(() => {
       this.getPagedRoles();
     });
+  }
+
+  onSearch(event: Event): void {
+    this.pagination.currentPage = 1;
+    this.searchText = (event.target as HTMLInputElement).value;
+    console.log(event, this.searchText);
+    this.getPagedRoles();
   }
 
   onGoTo(page: number): void {
@@ -63,12 +76,11 @@ export class RolesComponent {
 
   getPagedRoles(): void {
     this.rolesService
-      .getPaged(this.pagination.currentPage - 1, this.pagination.pageSize, 'DBB1F084-0E5C-488F-8990-EA1FDF223A94')
+      .getPaged(this.pagination.currentPage - 1, this.pagination.pageSize, 'DBB1F084-0E5C-488F-8990-EA1FDF223A94', this.searchText)
       .subscribe({
         next: collection => {
           this.collection = collection;
         }
       });
   }
-
 }

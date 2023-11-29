@@ -2,11 +2,13 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
-import { CreateRole, UpdateRole } from '@models/security/role.model';
+import { CreateRole } from '@models/security/role.model';
 import { ProcessAction } from '@models/shared/process-action.model';
 import { ProcessStatus } from '@models/shared/process-status.model';
 import { ErrorsService } from '@services/errors.service';
+import { MessagesService } from '@services/messages.service';
 import { RolesService } from '@services/roles.service';
 
 interface InputDialogData {
@@ -36,6 +38,7 @@ export class RoleDetailDialogComponent {
     private formBuilder: FormBuilder,
     private rolesService: RolesService,
     private errorService: ErrorsService,
+    private messagesService: MessagesService,
     @Inject(DIALOG_DATA) data: InputDialogData) {
     this.action = data.action;
     this.roleId = data.roleId;
@@ -85,6 +88,9 @@ export class RoleDetailDialogComponent {
             name: role.name,
             description: role.description
           });
+        },
+        error: response => {
+          this.messagesService.showError(response);
         }
       });
   }
@@ -97,9 +103,12 @@ export class RoleDetailDialogComponent {
       .subscribe({
         next: () => {
           this.status = 'success';
+          this.messagesService.showSuccess('Role created successfully!');
+          this.dialogRef.close();
         },
-        error: () => {
+        error: response => {
           this.status = 'error';
+          this.messagesService.showError(response);
         }
       });
   }
@@ -113,9 +122,12 @@ export class RoleDetailDialogComponent {
       .subscribe({
         next: () => {
           this.status = 'success';
+          this.messagesService.showSuccess('Role updated successfully!');
+          this.dialogRef.close();
         },
-        error: () => {
+        error: response => {
           this.status = 'error';
+          this.messagesService.showError(response);
         }
       });
   }
