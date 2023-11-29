@@ -7,11 +7,10 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
     `
     button[disabled] {
       background-color: rgb(71 81 105);
-      color: rgb(24 24 27);
+      color: rgb(244 244 245);
       cursor: default;
     }
     button[disabled].current {
-      color: rgb(244 244 245);
       font-weight: bold;
     }
     `
